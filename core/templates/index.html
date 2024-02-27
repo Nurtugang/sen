@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+      <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
+        <div class="block-content block-content-full">
+          <div class="py-4 text-center">
+            <div class="mb-3">
+              <i class="far fa-calendar fa-3x text-xinspire"></i>
+            </div>
+            <div class="fs-4 fw-semibold">Настройка камер</div>
+            <div class="text-muted">На стадии разработки</div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4" style="border: 1px solid rgb(85, 81, 81);"  id="start-face-detection-btn">
+      <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
+        <div class="block-content block-content-full">
+          <div class="py-4 text-center">
+            <div class="mb-3">
+              <i class="fa fa-user-md fa-3x text-xsmooth"></i>
+            </div>
+            <div class="fs-4 fw-semibold">Запуск камер</div>
+            <div class="text-muted">Запустить модуль</div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4" >
+      <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
+        <div class="block-content block-content-full">
+          <div class="py-4 text-center">
+            <div class="mb-3">
+              <i class="fab fa-paypal fa-3x text-info"></i>
+            </div>
+            <div class="fs-4 fw-semibold">Управление модулями</div>
+            <div class="text-muted">На стадии разработки</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+<script>
+document.getElementById("start-face-detection-btn").addEventListener("click", function() {
+    fetch('/start-face-detection/', {method: 'POST'})
+        .then(response => response.json())
+        .then(data => console.log(data));
+});
+</script>
+{% endblock content %}
+
+   

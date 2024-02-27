@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div style="text-align: center;" class="justify-content-center">
+    <h1>
+    <a style=" font-size: 25px !important;" href="https://gitlab.com/nasa4/senv2">Ссылка на проект в Gitlab</a>
+    </h1>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-6 col-xl-6">
+      <!-- Story #1 -->
+      <div class="block block-rounded">
+        <div class="block-content pb-8 text-end bg-image" style="min-height: 350px; background-image: url('{% static   'presi.png' %}');">
+          <span class="badge bg-primary fw-bold p-2 text-uppercase">
+            Презентация
+          </span>
+        </div>
+        <div class="block-content">
+          <a style="color:rgb(33, 91, 125) !important " class="fw-semibold text-dark" href="https://docs.google.com/presentation/d/1fyei4eh6428Feeztk2tOJltvrRlBV5ZX/edit?usp=drive_link&ouid=113162597811451722898&rtpof=true&sd=true">
+            Ссылка на презентацию
+          </a>
+          <p class="fs-sm fw-medium text-muted mt-1">
+            Интеллектуальная информационная система мониторинга туристических маршрутов
+          </p>
+        </div>
+     
+      </div>
+      <!-- END Story #1 -->
+    </div>
+    <div class="col-md-6 col-xl-6">
+      <!-- Story #2 -->
+      <div class="block block-rounded">
+        <div class="block-content pb-8 text-end bg-image" style="min-height: 350px; background-image: url('{% static   'video.png' %}');">
+          <span class="badge bg-warning fw-bold p-2 text-uppercase">
+            Видео
+          </span>
+        </div>
+        <div class="block-content">
+          <a style="color:rgb(33, 91, 125) !important " class="fw-semibold text-dark" href="https://drive.google.com/file/d/1r-saEN5ky6pWnQD9Tjs4tz9vsojwhcVh/view?usp=drive_link">
+            Ссылка на видео
+          </a>
+          <p class="fs-sm fw-medium text-muted mt-1">
+            Видеорезультат на экспериментальной среде
+          </p>
+        </div>
+  
+      </div>
+      <!-- END Story #2 -->
+    </div>
+
+
+    </div>
+  </div>
+{% endblock content %}
+
+   

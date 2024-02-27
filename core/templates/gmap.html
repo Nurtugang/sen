@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SEN</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <style>
+        #map {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 20,
+        center: { lat: 43.224457810767866, lng: 76.92456475041607 },
+    });
+
+    const observations = JSON.parse('{{ observations|safe }}');
+    const lineCoordinates = [];
+
+    if (observations.length > 0) {
+        observations.reverse().forEach(function(camera, index) {
+            const position = { lat: camera.latitude, lng: camera.longitude };
+            lineCoordinates.push(position);
+
+            new google.maps.Marker({
+                position: position,
+                map: map,
+                label: camera.camera_name,
+                title: camera.camera_name,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 7,
+                    fillColor: index === 0 ? '#00FF00' : '#FF0000', // Первый маркер зеленый, остальные красные
+                    fillOpacity: 1,
+                    strokeWeight: 2
+                }
+            });
+
+            // Установка центра карты на первую камеру в исходном списке (последнюю в перевернутом)
+            if (index === 0) {
+                map.setCenter(position);
+            }
+        });
+
+        // Создание полилинии со стрелкой от последней камеры к первой
+        const linePath = new google.maps.Polyline({
+            path: lineCoordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+            icons: [{
+                icon: { path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW },
+                offset: '100%', // Стрелка будет на конце линии
+                repeat: '100px' // Опционально, можно убрать, если нужна одна стрелка в конце
+            }],
+        });
+
+        linePath.setMap(map);
+    }
+}
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1oKQazMPE8X_uF2jf0nBI8GC7C_p51oE&callback=initMap">
+</script>
+</body>
+</html>
